@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" routerLink="/">
+      🔗 URL Shortener
+    </a>
+
+    <div class="navbar-nav me-auto">
+      <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Links</a>
+      <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      @if (authService.isLoggedIn()) {
+        <div class="text-light small">
+          <strong>{{ authService.userName() }}</strong>
+
+          @if (authService.isAdmin()) {
+            <span class="badge bg-warning text-dark ms-2">Admin</span>
+          } @else {
+            <span class="badge bg-secondary ms-2">User</span>
+          }
+        </div>
+
+        <button class="btn btn-outline-light btn-sm" (click)="onLogout()">
+          Logout
+        </button>
+      } @else {
+        <a class="btn btn-outline-light btn-sm" routerLink="/login">
+          Sign In
+        </a>
+      }
+    </div>
+  </div>
+</nav>
+
+<main class="container py-4">
+  <router-outlet></router-outlet>
+</main>

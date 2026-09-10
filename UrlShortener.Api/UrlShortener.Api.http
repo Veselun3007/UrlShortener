@@ -1,0 +1,60 @@
+@UrlShortener.Api_HostAddress = https://localhost:7197
+@token = paste-token-here
+
+### Login
+POST {{UrlShortener.Api_HostAddress}}/api/Auth/Login
+Content-Type: application/json
+
+{
+  "userName": "admin",
+  "password": "Admin123!"
+}
+
+###
+
+### Get all short URLs
+GET {{UrlShortener.Api_HostAddress}}/api/ShortUrls/GetAll
+
+###
+
+### Get About page
+GET {{UrlShortener.Api_HostAddress}}/api/About/Get
+
+###
+
+### Create short URL
+POST {{UrlShortener.Api_HostAddress}}/api/ShortUrls/Create
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "url": "https://example.com"
+}
+
+###
+
+### Get short URL by id
+GET {{UrlShortener.Api_HostAddress}}/api/ShortUrls/GetById/PUT-ID-HERE
+Authorization: Bearer {{token}}
+
+###
+
+### Delete short URL
+DELETE {{UrlShortener.Api_HostAddress}}/api/ShortUrls/Delete/PUT-ID-HERE
+Authorization: Bearer {{token}}
+
+###
+
+### Redirect by short code
+GET {{UrlShortener.Api_HostAddress}}/s/PUT-CODE-HERE
+
+###
+
+### Update About page
+PUT {{UrlShortener.Api_HostAddress}}/api/About/Update
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "content": "This is the About page."
+}

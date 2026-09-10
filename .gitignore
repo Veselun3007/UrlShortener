@@ -1,0 +1,25 @@
+# .NET / C#
+[Bb]in/
+[Oo]bj/
+*.user
+*.userosscache
+*.sln.docstates
+appsettings.Development.json
+appsettings.Local.json
+*.suo
+*.user
+
+# Angular / Node.js
+node_modules/
+dist/
+.angular/
+.npm/
+coverage/
+
+# IDEs & OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

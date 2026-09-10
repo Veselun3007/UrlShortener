@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.Api", "UrlShortener.Api\UrlShortener.Api.csproj", "{FE77EC0D-9D6D-4701-A671-876AC8298D5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{326E798B-9F60-42C4-8349-3127DA6966EA}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.Tests", "UrlShortener.Tests\UrlShortener.Tests.csproj", "{22D5DD22-702E-49D1-9086-F10122F0C811}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE77EC0D-9D6D-4701-A671-876AC8298D5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE77EC0D-9D6D-4701-A671-876AC8298D5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE77EC0D-9D6D-4701-A671-876AC8298D5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE77EC0D-9D6D-4701-A671-876AC8298D5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22D5DD22-702E-49D1-9086-F10122F0C811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22D5DD22-702E-49D1-9086-F10122F0C811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22D5DD22-702E-49D1-9086-F10122F0C811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22D5DD22-702E-49D1-9086-F10122F0C811}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
