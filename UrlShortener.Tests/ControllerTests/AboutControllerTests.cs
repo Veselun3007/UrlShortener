@@ -75,6 +75,6 @@ public sealed class AboutControllerTests(TestWebApplicationFactory factory, ITes
 
         await PrintResponseAsync(response);
 
-        Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
 }

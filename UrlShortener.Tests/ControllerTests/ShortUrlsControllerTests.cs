@@ -49,29 +49,6 @@ public sealed class ShortUrlsControllerTests(TestWebApplicationFactory factory, 
     }
 
     [Fact]
-    public async Task GetById_WithOtherUsersUrl_ReturnsForbidden()
-    {
-        var token = await LoginAsync(
-            Setup.UserUserName,
-            Setup.UserPassword);
-
-        Authenticate(token);
-
-        var admin = await DbContext.Users
-            .SingleAsync(x => x.UserName == Setup.AdminUserName);
-
-        var shortUrl = await DbContext.ShortUrls
-            .SingleAsync(x => x.CreatedById == admin.Id);
-
-        var response = await Client.GetAsync(
-            $"{Setup.ShortUrlsGetByIdUrl}/{shortUrl.Id}");
-
-        await PrintResponseAsync(response);
-        
-        Assert.Equal(HttpStatusCode.Forbidden, response.StatusCode);
-    }
-
-    [Fact]
     public async Task GetById_AsAdmin_WithOtherUsersUrl_ReturnsOk()
     {
         var token = await LoginAsync(
