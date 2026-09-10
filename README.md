@@ -1,6 +1,6 @@
 # 🔗 URL Shortener
 
-A full-stack web application for shortening URLs, managing links, and tracking creations. Built with **.NET 8** and **Angular** (Zoneless + Signals).
+A full-stack web application for shortening URLs, managing links, and tracking creations. Built with **.NET 8** and **Angular** .
 
 ## Tech Stack
 * **Backend:** .NET 8, ASP.NET Core Web API, Entity Framework Core, SQL Server, ASP.NET Core Identity with JWT.
