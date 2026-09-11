@@ -30,12 +30,12 @@ docker-compose up -d
 Navigate to the API project folder:
 
 ```bash
-cd Api
+cd UrlShortener.Api
 dotnet run
 ```
 
 - The API will start, apply EF Core migrations, and seed the database automatically.
-- Swagger UI is available at: http://localhost:5288/swagger
+- Swagger UI is available at: http://localhost:5288/swagger/index.html
 
 
 ### 3. Run the Frontend Client
@@ -43,7 +43,7 @@ dotnet run
 Open a new terminal window, navigate to the client project folder:
 
 ```bash
-cd Client
+cd urlshortener-client
 npm install
 npm start
 ```
