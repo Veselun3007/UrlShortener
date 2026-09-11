@@ -55,7 +55,7 @@ public sealed class DataSetup(UriShortenerDbContext dbContext, UserManager<Appli
 
     private async Task SeedAboutPageAsync()
     {
-        dbContext.AboutPages.Add(new AboutPage
+        await dbContext.AboutPages.AddAsync(new AboutPage
         {
             Content = "Test About page content.",
             UpdatedDate = DateTime.UtcNow
