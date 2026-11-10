@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Json;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using UrlShortener.Api.Data;
 using UrlShortener.Api.DTOs;
@@ -9,28 +10,28 @@ using Xunit.Abstractions;
 
 namespace UrlShortener.Tests.Base;
 
-public abstract class BaseIntegrationTest : IClassFixture<TestWebApplicationFactory>, IDisposable
+public abstract class BaseIntegrationTest : IClassFixture<IntegrationTestFixture>, IDisposable
 {
     protected readonly TestWebApplicationFactory Factory;
-    protected readonly HttpClient Client;
     protected readonly UriShortenerDbContext DbContext;
+    protected readonly HttpClient Client;
 
     private readonly IServiceScope _scope;
     private readonly ITestOutputHelper _output;
 
-    protected BaseIntegrationTest(TestWebApplicationFactory factory, ITestOutputHelper output)
+    protected BaseIntegrationTest(IntegrationTestFixture fixture, ITestOutputHelper output)
     {
-        Factory = factory;
-        Client = factory.CreateClient();
+        Factory = fixture.Factory;
+        Client = Factory.CreateClient();
         _output = output;
 
-        _scope = factory.Services.CreateScope();
+        _scope = Factory.Services.CreateScope();
 
         DbContext = _scope.ServiceProvider
             .GetRequiredService<UriShortenerDbContext>();
 
         var userManager = _scope.ServiceProvider
-            .GetRequiredService<Microsoft.AspNetCore.Identity.UserManager<ApplicationUser>>();
+            .GetRequiredService<UserManager<ApplicationUser>>();
 
         var dataSetup = new DataSetup(DbContext, userManager);
 
@@ -39,8 +40,7 @@ public abstract class BaseIntegrationTest : IClassFixture<TestWebApplicationFact
 
     protected async Task<string> LoginAsync(string userName, string password)
     {
-        var response = await Client.PostAsJsonAsync(
-            Setup.AuthLoginUrl,
+        var response = await Client.PostAsJsonAsync(Setup.AuthLoginUrl,
             new LoginRequest
             {
                 UserName = userName,
@@ -57,16 +57,13 @@ public abstract class BaseIntegrationTest : IClassFixture<TestWebApplicationFact
     protected void Authenticate(string token)
     {
         Client.DefaultRequestHeaders.Authorization =
-            new System.Net.Http.Headers.AuthenticationHeaderValue(
-                "Bearer",
-                token);
+            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
     }
 
     protected async Task PrintResponseAsync(HttpResponseMessage response)
     {
         var body = await response.Content.ReadAsStringAsync();
-
-        _output.WriteLine("");
+        
         _output.WriteLine("========================================");
         _output.WriteLine($"{response.RequestMessage?.Method} {response.RequestMessage?.RequestUri}");
         _output.WriteLine($"Status: {(int)response.StatusCode} {response.StatusCode}");

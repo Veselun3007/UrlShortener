@@ -96,7 +96,12 @@ var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
-    await IdentitySeeder.SeedAsync(scope.ServiceProvider);
+    var services = scope.ServiceProvider;
+    var dbContext = services.GetRequiredService<UriShortenerDbContext>();
+    
+    await dbContext.Database.MigrateAsync();
+
+    await IdentitySeeder.SeedAsync(services);
 }
 
 if (app.Environment.IsDevelopment())

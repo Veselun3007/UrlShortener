@@ -7,7 +7,7 @@ using Xunit.Abstractions;
 
 namespace UrlShortener.Tests.ControllerTests;
 
-public sealed class AboutControllerTests(TestWebApplicationFactory factory, ITestOutputHelper output) : BaseIntegrationTest(factory, output)
+public sealed class AboutControllerTests(IntegrationTestFixture fixture, ITestOutputHelper output) : BaseIntegrationTest(fixture, output)
 {
     [Fact]
     public async Task Get_ReturnsOk()

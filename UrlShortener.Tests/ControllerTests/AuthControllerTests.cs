@@ -7,7 +7,7 @@ using Xunit.Abstractions;
 
 namespace UrlShortener.Tests.ControllerTests;
 
-public sealed class AuthControllerTests(TestWebApplicationFactory factory, ITestOutputHelper output) : BaseIntegrationTest(factory, output)
+public sealed class AuthControllerTests(IntegrationTestFixture fixture, ITestOutputHelper output) : BaseIntegrationTest(fixture, output)
 {
     [Fact]
     public async Task Login_WithValidCredentials_ReturnsToken()
